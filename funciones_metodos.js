@@ -6,9 +6,9 @@ const URL = 'https://fakestoreapi.com' ;
 
 //----FUNCION PARA EL GET :OBTIENE TODOS LOS PRODUCTOS Y UN PRODUCTO ESPECIFICO-------
 
-async function obtenerProductos(id) {
+async function obtenerProductos(endPoint) {
     try {
-        const respuesta = await fetch(`${URL}/${id}` ,{
+        const respuesta = await fetch(`${URL}/${endPoint}` ,{
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ async function obtenerProductos(id) {
 
 //-----------FUNCION PARA EL POST: AGREGA UN NUEVO PRODUCTO----------------
 
-async function agregarProducto(id, title, price, category) {
+async function agregarProducto(endPoint, title, price, category) {
     const config = {
         method: 'POST',
         headers: {
@@ -38,7 +38,7 @@ async function agregarProducto(id, title, price, category) {
         })
     }
     try {
-        const respuesta = await fetch(`${URL}/${id}`, config);
+        const respuesta = await fetch(`${URL}/${endPoint}`, config);
         const datos = await respuesta.json();
         return datos;
     } catch (error) {
@@ -51,7 +51,7 @@ async function agregarProducto(id, title, price, category) {
 
 //-----------FUNCION PARA EL PUT: MODIFICA UN PRODUCTO----------------
 
-async function modificarProducto(id,title, price, category) {
+async function modificarProducto(endPoint,title, price, category) {
     const config = {
         method: 'PUT',
         headers: {
@@ -66,7 +66,7 @@ async function modificarProducto(id,title, price, category) {
         })
     }
     try {
-        const respuesta = await fetch(`${URL}/${id}`, config);
+        const respuesta = await fetch(`${URL}/${endPoint}`, config);
         const datos = await respuesta.json();
         return datos;
     } catch (error) {
@@ -78,12 +78,12 @@ async function modificarProducto(id,title, price, category) {
 
 //-----------FUNCION PARA EL DELETE: ELIMINA UN PRODUCTO----------------
 
-async function eliminarProducto(id) {
+async function eliminarProducto(endPoint) {
     const config = {
         method: 'DELETE',
     }
     try {
-        const respuesta = await fetch(`${URL}/${id}`, config);
+        const respuesta = await fetch(`${URL}/${endPoint}`, config);
         const datos = await respuesta.json();
         return datos;
     } catch (error) {
